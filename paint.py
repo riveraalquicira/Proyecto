@@ -1,4 +1,5 @@
-"""Paint, for drawing shapes.
+"""
+Paint, for drawing shapes.
 
 Exercises
 1. Add a color.
@@ -36,14 +37,33 @@ def square(start, end):
 
 
 def circle(start, end):
-    """Draw circle from start to end."""
-    pass  # TODO
-
+    """
+    Toma la distancia entre los primeros dos inputs como el radio y lo replica 360 veces
+    """
+    up()
+    goto(start.x, start.y)
+    down()
+    
+    for count in range(361):
+        forward(end.x - start.x)
+        up()
+        goto(start.x, start.y)
+        down()
+        left(1)
 
 def rectangle(start, end):
-    """Draw rectangle from start to end."""
-    pass  # TODO
-
+    #Toma la distancia entre los primeros dos puntos como la base
+    #y dibuja un rectangulo con la mitad de la base como la altura
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    for i in range(2):
+        forward(end.x - start.x)
+        left(90)
+        forward((end.x - start.x)/2)
+        left(90)
+    end_fill()
 
 def triangle(start, end):
     """Draw triangle from start to end."""
@@ -89,6 +109,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('purple'), 'P')
 onkey(lambda: color('yellow'), 'Y')   # nuevo color
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
